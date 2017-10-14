@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2D96FC1F9180A100CABA8E /* RequestListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D96FB1F9180A100CABA8E /* RequestListCell.swift */; };
+		0A2D96FE1F91818F00CABA8E /* RequestNotifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D96FD1F91818F00CABA8E /* RequestNotifCell.swift */; };
+		0A2D97001F9181B500CABA8E /* RequestHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D96FF1F9181B500CABA8E /* RequestHeaderCell.swift */; };
+		0A2D97021F91880600CABA8E /* NotifController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D97011F91880600CABA8E /* NotifController.swift */; };
+		0A2D97051F91913300CABA8E /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D97041F91913300CABA8E /* PaddingTextField.swift */; };
 		0A8A6B3D1F906B9F006BEA35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A6B3C1F906B9F006BEA35 /* AppDelegate.swift */; };
 		0A8A6B441F906B9F006BEA35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8A6B421F906B9F006BEA35 /* Main.storyboard */; };
 		0A8A6B461F906B9F006BEA35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8A6B451F906B9F006BEA35 /* Assets.xcassets */; };
@@ -20,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2D96FB1F9180A100CABA8E /* RequestListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestListCell.swift; sourceTree = "<group>"; };
+		0A2D96FD1F91818F00CABA8E /* RequestNotifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNotifCell.swift; sourceTree = "<group>"; };
+		0A2D96FF1F9181B500CABA8E /* RequestHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeaderCell.swift; sourceTree = "<group>"; };
+		0A2D97011F91880600CABA8E /* NotifController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifController.swift; sourceTree = "<group>"; };
+		0A2D97041F91913300CABA8E /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		0A8A6B391F906B9F006BEA35 /* resQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = resQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8A6B3C1F906B9F006BEA35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8A6B431F906B9F006BEA35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +58,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2D96FA1F91807F00CABA8E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0A2D96FB1F9180A100CABA8E /* RequestListCell.swift */,
+				0A2D96FD1F91818F00CABA8E /* RequestNotifCell.swift */,
+				0A2D96FF1F9181B500CABA8E /* RequestHeaderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0A2D97031F9190F400CABA8E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0A2D97041F91913300CABA8E /* PaddingTextField.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		0A8A6B301F906B9F006BEA35 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +97,7 @@
 		0A8A6B3B1F906B9F006BEA35 /* resQ */ = {
 			isa = PBXGroup;
 			children = (
+				0A2D97031F9190F400CABA8E /* Util */,
 				0A8A6B521F906DFE006BEA35 /* Controller */,
 				0A8A6B511F906DF7006BEA35 /* View */,
 				0A8A6B501F906DF0006BEA35 /* Model */,
@@ -97,12 +126,14 @@
 		0A8A6B521F906DFE006BEA35 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0A2D96FA1F91807F00CABA8E /* Cells */,
 				0A8A6B531F906E59006BEA35 /* BaseController.swift */,
 				0A8A6B541F906E5A006BEA35 /* MakeReqController.swift */,
 				0A8A6B561F906E5A006BEA35 /* MapController.swift */,
 				0A8A6B551F906E5A006BEA35 /* ProfileController.swift */,
 				0A8A6B571F906E5A006BEA35 /* RequestsListController.swift */,
 				0A8A6B3C1F906B9F006BEA35 /* AppDelegate.swift */,
+				0A2D97011F91880600CABA8E /* NotifController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,10 +252,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-resQ/Pods-resQ-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -253,9 +286,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2D97021F91880600CABA8E /* NotifController.swift in Sources */,
+				0A2D97051F91913300CABA8E /* PaddingTextField.swift in Sources */,
 				0A8A6B581F906E5A006BEA35 /* BaseController.swift in Sources */,
+				0A2D96FC1F9180A100CABA8E /* RequestListCell.swift in Sources */,
+				0A2D96FE1F91818F00CABA8E /* RequestNotifCell.swift in Sources */,
 				0A8A6B5C1F906E5A006BEA35 /* RequestsListController.swift in Sources */,
 				0A8A6B3D1F906B9F006BEA35 /* AppDelegate.swift in Sources */,
+				0A2D97001F9181B500CABA8E /* RequestHeaderCell.swift in Sources */,
 				0A8A6B591F906E5A006BEA35 /* MakeReqController.swift in Sources */,
 				0A8A6B5B1F906E5A006BEA35 /* MapController.swift in Sources */,
 				0A8A6B5A1F906E5A006BEA35 /* ProfileController.swift in Sources */,
@@ -401,7 +439,7 @@
 				INFOPLIST_FILE = resQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "resq-mas";
+				PRODUCT_BUNDLE_IDENTIFIER = resQmas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -418,7 +456,7 @@
 				INFOPLIST_FILE = resQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "resq-mas";
+				PRODUCT_BUNDLE_IDENTIFIER = resQmas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

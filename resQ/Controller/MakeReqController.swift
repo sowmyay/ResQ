@@ -8,17 +8,25 @@
 
 import UIKit
 
-class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate {
+class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, ReqHeaderDelegate {
 
+    var heightIncreased:Bool = false
+    var reqTypes = ["Evacuation", "Food", "Medication", "Other"]
+    var reqImages = ["shelter", "add", "add", "add"]
+    var selectedReq = -1
     @IBOutlet weak var chooseBttn: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var nameTxtFld: PaddingTextField!
     @IBOutlet weak var subTxtFld: PaddingTextField!
     @IBOutlet weak var contentTxtView: UITextView!
+    @IBOutlet weak var reqTypeTableView: UITableView!
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
+    @IBOutlet weak var popUpView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.popUpView.isHidden = true
+        self.tableHeight.constant = CGFloat(45*1 + 44 * reqTypes.count)
         NotificationCenter.default.addObserver(self, selector: #selector(MakeReqController.keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MakeReqController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -42,36 +50,61 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate
     }
     
     @IBAction func chooseTouch(_ sender: Any) {
+        self.popUpView.isHidden = false
+        self.view.bringSubview(toFront: popUpView)
+        
     }
+    
+    func chooseTouched() {
+         self.popUpView.isHidden = true
+    }
+    
     
     @objc func keyboardDidShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            //if self.view.frame.origin.y == 0{
+            if !heightIncreased{
+                heightIncreased = true
                 self.bottomConstraint.constant += keyboardSize.height
-            //}
+            }
         }
-        
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            //if self.view.frame.origin.y != 0{
+            if heightIncreased{
+                heightIncreased = false
                 self.bottomConstraint.constant -= keyboardSize.height
-            //}
+            }
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reqTypes.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reqTypeCell", for: indexPath) as! ReqTypeSelectCell
+        cell.config(title: reqTypes[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reqHeaderCell") as! ReqTypeHeaderCell
+        cell.delegate = self
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedReq = indexPath.row
+        self.popUpView.isHidden = true
+        chooseBttn.titleLabel?.text = reqTypes[selectedReq]
+        chooseBttn.imageView?.image = UIImage(named: reqImages[selectedReq])
+    }
 
 }

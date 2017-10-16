@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0F00C61F9446B2007F5DBA /* ReqTypeSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F00C51F9446B2007F5DBA /* ReqTypeSelectCell.swift */; };
+		0A0F00C81F94485A007F5DBA /* ReqTypeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F00C71F94485A007F5DBA /* ReqTypeHeaderCell.swift */; };
+		0A0F00CE1F945D18007F5DBA /* BaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F00CD1F945D18007F5DBA /* BaseHandler.swift */; };
+		0A0F00D01F945D2D007F5DBA /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F00CF1F945D2D007F5DBA /* BaseRequest.swift */; };
+		0A0F00D21F945D3B007F5DBA /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F00D11F945D3B007F5DBA /* BaseResponse.swift */; };
+		0A0F00D41F945D79007F5DBA /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F00D31F945D79007F5DBA /* RequestSender.swift */; };
+		0A0F00D81F945DF7007F5DBA /* HTTPServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F00D71F945DF7007F5DBA /* HTTPServiceProvider.swift */; };
 		0A2D96FC1F9180A100CABA8E /* RequestListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D96FB1F9180A100CABA8E /* RequestListCell.swift */; };
 		0A2D96FE1F91818F00CABA8E /* RequestNotifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D96FD1F91818F00CABA8E /* RequestNotifCell.swift */; };
 		0A2D97001F9181B500CABA8E /* RequestHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D96FF1F9181B500CABA8E /* RequestHeaderCell.swift */; };
@@ -25,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0F00C51F9446B2007F5DBA /* ReqTypeSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqTypeSelectCell.swift; sourceTree = "<group>"; };
+		0A0F00C71F94485A007F5DBA /* ReqTypeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqTypeHeaderCell.swift; sourceTree = "<group>"; };
+		0A0F00CD1F945D18007F5DBA /* BaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHandler.swift; sourceTree = "<group>"; };
+		0A0F00CF1F945D2D007F5DBA /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		0A0F00D11F945D3B007F5DBA /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		0A0F00D31F945D79007F5DBA /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
+		0A0F00D71F945DF7007F5DBA /* HTTPServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServiceProvider.swift; sourceTree = "<group>"; };
 		0A2D96FB1F9180A100CABA8E /* RequestListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestListCell.swift; sourceTree = "<group>"; };
 		0A2D96FD1F91818F00CABA8E /* RequestNotifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNotifCell.swift; sourceTree = "<group>"; };
 		0A2D96FF1F9181B500CABA8E /* RequestHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeaderCell.swift; sourceTree = "<group>"; };
@@ -58,12 +72,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A0F00C41F944433007F5DBA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F00CC1F945C8E007F5DBA /* Response */,
+				0A0F00CB1F945C87007F5DBA /* Request */,
+				0A0F00CA1F945C82007F5DBA /* Handler */,
+				0A0F00C91F945C76007F5DBA /* Service */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A0F00C91F945C76007F5DBA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F00D31F945D79007F5DBA /* RequestSender.swift */,
+				0A0F00D71F945DF7007F5DBA /* HTTPServiceProvider.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0A0F00CA1F945C82007F5DBA /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F00CD1F945D18007F5DBA /* BaseHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		0A0F00CB1F945C87007F5DBA /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F00CF1F945D2D007F5DBA /* BaseRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		0A0F00CC1F945C8E007F5DBA /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F00D11F945D3B007F5DBA /* BaseResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		0A2D96FA1F91807F00CABA8E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				0A2D96FB1F9180A100CABA8E /* RequestListCell.swift */,
 				0A2D96FD1F91818F00CABA8E /* RequestNotifCell.swift */,
 				0A2D96FF1F9181B500CABA8E /* RequestHeaderCell.swift */,
+				0A0F00C51F9446B2007F5DBA /* ReqTypeSelectCell.swift */,
+				0A0F00C71F94485A007F5DBA /* ReqTypeHeaderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -97,23 +157,16 @@
 		0A8A6B3B1F906B9F006BEA35 /* resQ */ = {
 			isa = PBXGroup;
 			children = (
+				0A0F00C41F944433007F5DBA /* Model */,
 				0A2D97031F9190F400CABA8E /* Util */,
 				0A8A6B521F906DFE006BEA35 /* Controller */,
 				0A8A6B511F906DF7006BEA35 /* View */,
-				0A8A6B501F906DF0006BEA35 /* Model */,
 				0A8A6B451F906B9F006BEA35 /* Assets.xcassets */,
 				0A8A6B471F906B9F006BEA35 /* LaunchScreen.storyboard */,
 				0A8A6B421F906B9F006BEA35 /* Main.storyboard */,
 				0A8A6B4A1F906B9F006BEA35 /* Info.plist */,
 			);
 			path = resQ;
-			sourceTree = "<group>";
-		};
-		0A8A6B501F906DF0006BEA35 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0A8A6B511F906DF7006BEA35 /* View */ = {
@@ -290,13 +343,20 @@
 				0A2D97051F91913300CABA8E /* PaddingTextField.swift in Sources */,
 				0A8A6B581F906E5A006BEA35 /* BaseController.swift in Sources */,
 				0A2D96FC1F9180A100CABA8E /* RequestListCell.swift in Sources */,
+				0A0F00D41F945D79007F5DBA /* RequestSender.swift in Sources */,
+				0A0F00C61F9446B2007F5DBA /* ReqTypeSelectCell.swift in Sources */,
+				0A0F00D01F945D2D007F5DBA /* BaseRequest.swift in Sources */,
 				0A2D96FE1F91818F00CABA8E /* RequestNotifCell.swift in Sources */,
+				0A0F00D21F945D3B007F5DBA /* BaseResponse.swift in Sources */,
 				0A8A6B5C1F906E5A006BEA35 /* RequestsListController.swift in Sources */,
+				0A0F00C81F94485A007F5DBA /* ReqTypeHeaderCell.swift in Sources */,
 				0A8A6B3D1F906B9F006BEA35 /* AppDelegate.swift in Sources */,
 				0A2D97001F9181B500CABA8E /* RequestHeaderCell.swift in Sources */,
 				0A8A6B591F906E5A006BEA35 /* MakeReqController.swift in Sources */,
 				0A8A6B5B1F906E5A006BEA35 /* MapController.swift in Sources */,
 				0A8A6B5A1F906E5A006BEA35 /* ProfileController.swift in Sources */,
+				0A0F00D81F945DF7007F5DBA /* HTTPServiceProvider.swift in Sources */,
+				0A0F00CE1F945D18007F5DBA /* BaseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

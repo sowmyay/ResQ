@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 
+
 class RequestHeaderCell: UITableViewCell {
 
     @IBOutlet weak var disasterImage: UIImageView!

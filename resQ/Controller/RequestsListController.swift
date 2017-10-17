@@ -22,6 +22,7 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeRequest()
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -65,8 +66,14 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
         return 49
     }
     
-    
-    
+    func makeRequest(){
+        let request = TestRequest()
+        RequestSender().sendRequest(request, success: { (response) in
+            print(response)
+        }) { (error) in
+            print(error)
+        }
+    }
     
     /*
     // MARK: - Navigation

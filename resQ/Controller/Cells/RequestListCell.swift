@@ -47,5 +47,7 @@ class RequestListCell: UITableViewCell {
         timeSinceLbl.text = timeSince
         typeLbl.text      = type
     }
-
+    
+    
+    
 }

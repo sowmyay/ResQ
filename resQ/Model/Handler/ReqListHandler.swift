@@ -29,6 +29,10 @@ class ReqListHandler: BaseHandler {
     
     override func parser(_ response: AnyObject) -> BaseResponse? {
         
+        if let responseArray = response as? NSArray{
+            let responseDict:NSDictionary = ["list" : responseArray]
+            return ReqListResponse(response: responseDict)
+        }
         let data = response as! NSDictionary
         return ReqListResponse(response: data)
     }

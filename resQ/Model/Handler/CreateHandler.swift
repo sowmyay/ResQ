@@ -28,7 +28,10 @@ class CreateHandler: BaseHandler {
         dictionary["name"] = create.name as AnyObject
         dictionary["subject"] = create.subject as AnyObject
         dictionary["description"] = create.desc as AnyObject
-        
+//        dictionary["id"] = create.id as AnyObject
+//        dictionary["created_at"] = create.createdAt as AnyObject
+//        dictionary["updated_at"] = create.updatedAt as AnyObject
+//        dictionary["user_id"] = create.userId as AnyObject
         return dictionary
     }
     

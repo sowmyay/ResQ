@@ -50,6 +50,7 @@
 		0ADA8AB91F95B7650076A96D /* ReqListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA8AB81F95B7650076A96D /* ReqListRequest.swift */; };
 		0ADA8ABB1F95B7770076A96D /* ReqListHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA8ABA1F95B7770076A96D /* ReqListHandler.swift */; };
 		0AF5EFDB1F9569D400B30AD0 /* ReqDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF5EFDA1F9569D400B30AD0 /* ReqDetailsController.swift */; };
+		0AFCD0B81F97AB7900BD9DC7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD0B71F97AB7900BD9DC7 /* Extensions.swift */; };
 		7B5EECEB2489660CADB16240 /* Pods_resQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E40F4E82F90CDF375CF319 /* Pods_resQ.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		0ADA8AB81F95B7650076A96D /* ReqListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqListRequest.swift; sourceTree = "<group>"; };
 		0ADA8ABA1F95B7770076A96D /* ReqListHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqListHandler.swift; sourceTree = "<group>"; };
 		0AF5EFDA1F9569D400B30AD0 /* ReqDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqDetailsController.swift; sourceTree = "<group>"; };
+		0AFCD0B71F97AB7900BD9DC7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56A0A17AE1319C99F74E91FC /* Pods-resQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-resQ/Pods-resQ.debug.xcconfig"; sourceTree = "<group>"; };
 		A51B9B33C24D49EA7BBAFBF7 /* Pods-resQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-resQ/Pods-resQ.release.xcconfig"; sourceTree = "<group>"; };
 		F3E40F4E82F90CDF375CF319 /* Pods_resQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_resQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				0A2D97041F91913300CABA8E /* PaddingTextField.swift */,
 				0A3D923F1F95AD4900A61677 /* Constants.swift */,
 				0A96D7191F97178B00EB3A83 /* PlaceHolderTextView.swift */,
+				0AFCD0B71F97AB7900BD9DC7 /* Extensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				0A8A6B5C1F906E5A006BEA35 /* RequestsListController.swift in Sources */,
 				0A0F00C81F94485A007F5DBA /* ReqTypeHeaderCell.swift in Sources */,
 				0A8A6B3D1F906B9F006BEA35 /* AppDelegate.swift in Sources */,
+				0AFCD0B81F97AB7900BD9DC7 /* Extensions.swift in Sources */,
 				0A2D97001F9181B500CABA8E /* RequestHeaderCell.swift in Sources */,
 				0A2ADC121F96F1EA00FA091C /* GetDetailsHandler.swift in Sources */,
 				0A8A6B591F906E5A006BEA35 /* MakeReqController.swift in Sources */,

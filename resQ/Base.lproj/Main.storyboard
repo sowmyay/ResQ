@@ -21,9 +21,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Aa5-fA-7CA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="profileTab" id="vyA-dz-HBP">
+                    <tabBarItem key="tabBarItem" title="" image="profileTab" selectedImage="profileTab" id="vyA-dz-HBP">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="Ijp-T4-oAi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDZ-P0-rWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,13 +40,32 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="glg-5v-4Rg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="notificationTab" id="vla-Yv-dH7">
+                    <tabBarItem key="tabBarItem" title="" image="notificationTab" selectedImage="notificationTab" id="vla-Yv-dH7">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="JkV-ZY-XRB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6C-DZ-57B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-478" y="618"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X5e-YG-AO2">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="ixB-Yy-MZS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="requestsListTab" selectedImage="requestsListTab" id="f0S-HD-oiG">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-12"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RyJ-IQ-Ijv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JgQ-cb-oTL" kind="relationship" relationship="rootViewController" id="sMO-X0-aXg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LJE-Hg-grG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1914" y="-228"/>
         </scene>
         <!--Requests-->
         <scene sceneID="dxT-83-DiG">
@@ -72,7 +92,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unassigned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-s0-TwB">
                                                             <rect key="frame" x="308" y="13" width="52" height="11"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="tomato"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3d-ZI-lR6">
@@ -94,8 +114,8 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="744" text="Need help getting out!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vx4-Ph-DzN">
-                                                            <rect key="frame" x="10" y="36" width="158" height="26"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <rect key="frame" x="10" y="36" width="168.5" height="26"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <color key="textColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -124,14 +144,15 @@
                                                         <constraint firstItem="Qap-s0-TwB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wgb-KT-Fwc" secondAttribute="leading" constant="20" symbolic="YES" id="0qi-cJ-Qbs"/>
                                                         <constraint firstItem="hkU-sa-ujO" firstAttribute="top" secondItem="aNU-Jz-udA" secondAttribute="bottom" constant="15" id="1x7-Or-cCl"/>
                                                         <constraint firstItem="vx4-Ph-DzN" firstAttribute="leading" secondItem="a3d-ZI-lR6" secondAttribute="leading" id="41c-82-H4I"/>
-                                                        <constraint firstItem="hkU-sa-ujO" firstAttribute="top" secondItem="oxp-eE-NqX" secondAttribute="top" id="4k9-mE-5eR"/>
                                                         <constraint firstItem="oxp-eE-NqX" firstAttribute="leading" secondItem="hkU-sa-ujO" secondAttribute="trailing" constant="10" id="DeA-VR-gKL"/>
                                                         <constraint firstItem="Qap-s0-TwB" firstAttribute="centerY" secondItem="a3d-ZI-lR6" secondAttribute="centerY" id="H3z-L6-ONY"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oxp-eE-NqX" secondAttribute="bottom" constant="10" id="IsF-QE-bdN"/>
                                                         <constraint firstItem="a3d-ZI-lR6" firstAttribute="top" secondItem="wgb-KT-Fwc" secondAttribute="top" constant="10" id="JXg-Vw-0fm"/>
                                                         <constraint firstAttribute="bottom" secondItem="hkU-sa-ujO" secondAttribute="bottom" constant="10" id="KPQ-2I-a8k"/>
                                                         <constraint firstItem="vx4-Ph-DzN" firstAttribute="top" secondItem="a3d-ZI-lR6" secondAttribute="bottom" constant="10" id="P2m-CS-SL3"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vx4-Ph-DzN" secondAttribute="trailing" constant="20" symbolic="YES" id="QZD-iR-LDc"/>
                                                         <constraint firstItem="aNU-Jz-udA" firstAttribute="leading" secondItem="vx4-Ph-DzN" secondAttribute="leading" id="Tr1-aX-1Xa"/>
+                                                        <constraint firstItem="oxp-eE-NqX" firstAttribute="top" secondItem="aNU-Jz-udA" secondAttribute="bottom" constant="15" id="eK4-A0-xx3"/>
                                                         <constraint firstItem="aNU-Jz-udA" firstAttribute="top" secondItem="vx4-Ph-DzN" secondAttribute="bottom" constant="10" id="fN9-Wz-KGj"/>
                                                         <constraint firstItem="hkU-sa-ujO" firstAttribute="leading" secondItem="aNU-Jz-udA" secondAttribute="leading" id="hd3-D0-XcZ"/>
                                                         <constraint firstItem="a3d-ZI-lR6" firstAttribute="leading" secondItem="wgb-KT-Fwc" secondAttribute="leading" constant="10" id="k8D-g9-iEA"/>
@@ -156,7 +177,6 @@
                                             <outlet property="timeSinceLbl" destination="oxp-eE-NqX" id="tii-hB-si2"/>
                                             <outlet property="titleLbl" destination="vx4-Ph-DzN" id="cZQ-2G-7np"/>
                                             <outlet property="typeLbl" destination="MAe-Gq-k2S" id="JmE-uj-vnY"/>
-                                            <segue destination="CsX-3M-Hl7" kind="show" identifier="showDetails" id="TO9-gN-bAh"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reqNotifCell" rowHeight="150" id="GW2-A0-G1f" customClass="RequestNotifCell" customModule="resQ" customModuleProvider="target">
@@ -344,7 +364,7 @@
                                         <state key="normal" image="write"/>
                                         <connections>
                                             <action selector="writeTouch:" destination="JgQ-cb-oTL" eventType="touchUpInside" id="w1k-L5-M3J"/>
-                                            <segue destination="TE5-yW-zao" kind="presentation" id="2cv-LA-l0p"/>
+                                            <segue destination="TE5-yW-zao" kind="presentation" identifier="MakeRequest" id="2cv-LA-l0p"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d89-DG-uQR">
@@ -386,6 +406,7 @@
                     <tabBarItem key="tabBarItem" title="" image="requestsListTab" selectedImage="requestsListTab" id="sbx-bA-t7t">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="Ehn-W2-OMR"/>
                     <connections>
                         <outlet property="tableView" destination="YDe-b3-Vr8" id="bOy-sn-1zu"/>
                         <outlet property="titleLbl" destination="uBV-3q-ApU" id="SgJ-8r-aTM"/>
@@ -533,6 +554,9 @@
                                                                 <string key="value">Please describe what kind of help you need as clearly as possible. For example, if you are requesting food, tell us how many are with you and what you need. </string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="TE5-yW-zao" id="8Yj-80-3S5"/>
+                                                        </connections>
                                                     </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arq-uD-R3r">
                                                         <rect key="frame" x="320" y="343" width="40" height="44"/>
@@ -747,7 +771,7 @@
         <!--Req Details Controller-->
         <scene sceneID="KEu-RW-lSp">
             <objects>
-                <viewController id="CsX-3M-Hl7" customClass="ReqDetailsController" customModule="resQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReqDetailsController" id="CsX-3M-Hl7" customClass="ReqDetailsController" customModule="resQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8SQ-Tt-FMN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="870"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -765,7 +789,7 @@
                                             <color key="titleColor" name="greyishBrown"/>
                                         </state>
                                         <connections>
-                                            <action selector="backTouch:" destination="CsX-3M-Hl7" eventType="touchUpInside" id="FL8-ss-dBm"/>
+                                            <action selector="backTouch:" destination="CsX-3M-Hl7" eventType="touchUpInside" id="9gd-M9-xoj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNG-Ss-QTL">
@@ -808,12 +832,12 @@
                                     <constraint firstItem="K3m-oh-Gcr" firstAttribute="centerY" secondItem="RNG-Ss-QTL" secondAttribute="centerY" id="tND-xo-82H"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="365" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-df-d9v">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-df-d9v">
                                 <rect key="frame" x="0.0" y="81" width="375" height="745"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" name="whiteTwo"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="410" id="zMh-uJ-J1z" customClass="ReqDetailsCell" customModule="resQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="410"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="detailsCell" rowHeight="410" id="zMh-uJ-J1z" customClass="ReqDetailsCell" customModule="resQ" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="410"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zMh-uJ-J1z" id="si0-lw-W2G">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="410"/>
@@ -847,8 +871,8 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="744" text="Need help getting out!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLs-h2-dcD">
-                                                            <rect key="frame" x="10" y="36" width="158" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <rect key="frame" x="10" y="36" width="174" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                             <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1044,8 +1068,8 @@ I think there are some trees that have fallen down because of the tornado. And o
                                             <outlet property="viewsLbl" destination="ZSo-vQ-CJ2" id="weX-4s-BrX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="69" id="NYO-tw-dCA" customClass="RespondCell" customModule="resQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="438" width="375" height="69"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="respondCell" rowHeight="69" id="NYO-tw-dCA" customClass="RespondCell" customModule="resQ" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="411" width="375" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYO-tw-dCA" id="691-6C-QFB">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
@@ -1083,8 +1107,8 @@ I think there are some trees that have fallen down because of the tornado. And o
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="mel-2V-8vw" customClass="CommentsCell" customModule="resQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="507" width="375" height="110"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentsCell" rowHeight="110" id="mel-2V-8vw" customClass="CommentsCell" customModule="resQ" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="480" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mel-2V-8vw" id="arH-zl-r7M">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
@@ -1144,8 +1168,8 @@ I think there are some trees that have fallen down because of the tornado. And o
                                             <outlet property="postedAtLbl" destination="pvp-zQ-MrG" id="bbe-Md-x7A"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="130" id="ihy-3S-DEb" customClass="CommentsCell" customModule="resQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="617" width="375" height="130"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="subCommentsCell" rowHeight="130" id="ihy-3S-DEb" customClass="CommentsCell" customModule="resQ" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="590" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ihy-3S-DEb" id="uN2-mh-GKK">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
@@ -1208,6 +1232,10 @@ I think there are some trees that have fallen down because of the tornado. And o
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="CsX-3M-Hl7" id="0mG-Vp-oOk"/>
+                                    <outlet property="delegate" destination="CsX-3M-Hl7" id="2OC-2A-4mI"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f64-Da-gWq">
                                 <rect key="frame" x="0.0" y="826" width="375" height="44"/>
@@ -1259,6 +1287,7 @@ I think there are some trees that have fallen down because of the tornado. And o
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IgH-Tb-Ra0"/>
                     </view>
+                    <navigationItem key="navigationItem" id="O4g-BV-x5X"/>
                     <size key="freeformSize" width="375" height="870"/>
                     <connections>
                         <outlet property="tableView" destination="jyv-df-d9v" id="Qvt-fL-lXu"/>
@@ -1281,6 +1310,7 @@ I think there are some trees that have fallen down because of the tornado. And o
                     <tabBarItem key="tabBarItem" title="" image="locationTab" id="zW0-gk-UVm">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="CxQ-AC-PC9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RkV-dd-Rd4" sceneMemberID="firstResponder"/>
             </objects>
@@ -1297,15 +1327,69 @@ I think there are some trees that have fallen down because of the tornado. And o
                         <color key="selectedImageTintColor" name="tomato"/>
                     </tabBar>
                     <connections>
-                        <segue destination="JgQ-cb-oTL" kind="relationship" relationship="viewControllers" id="Qjr-JT-9Kq"/>
-                        <segue destination="pWk-8D-Rdm" kind="relationship" relationship="viewControllers" id="WqO-IM-JC4"/>
-                        <segue destination="vxg-hq-U65" kind="relationship" relationship="viewControllers" id="XGm-32-pFm"/>
-                        <segue destination="fri-Gq-Yyh" kind="relationship" relationship="viewControllers" id="xZI-E0-Jhs"/>
+                        <segue destination="ixB-Yy-MZS" kind="relationship" relationship="viewControllers" id="lMd-Kl-hDp"/>
+                        <segue destination="9OF-Lh-G79" kind="relationship" relationship="viewControllers" id="BH6-6s-TNC"/>
+                        <segue destination="JuZ-PY-BNP" kind="relationship" relationship="viewControllers" id="FdA-8J-4Gq"/>
+                        <segue destination="Gau-Ev-xg1" kind="relationship" relationship="viewControllers" id="nt5-cW-2Vu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyN-Tt-RP7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-914" y="-277"/>
+            <point key="canvasLocation" x="-927" y="-1452"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vNF-FU-Bqe">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="9OF-Lh-G79" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="locationTab" selectedImage="locationTab" id="HPZ-QZ-bGa">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-12"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7lZ-gi-i7C">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pWk-8D-Rdm" kind="relationship" relationship="rootViewController" id="iM0-vi-VFV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9Q-Ue-HqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1151" y="-246"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6wQ-JI-hci">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="JuZ-PY-BNP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="notificationTab" selectedImage="notificationTab" id="7Sh-kg-hHF">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-12"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ov6-PU-0dQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vxg-hq-U65" kind="relationship" relationship="rootViewController" id="e5T-YQ-bPB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rx6-vo-i0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-426" y="-249"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jUZ-t8-MEg">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="Gau-Ev-xg1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="profileTab" selectedImage="profileTab" id="Mg1-90-kgb">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-12"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NHN-LR-QZI">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fri-Gq-Yyh" kind="relationship" relationship="rootViewController" id="bwO-Yn-g0g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7U-Kq-VYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="-238"/>
         </scene>
     </scenes>
     <resources>
@@ -1340,8 +1424,8 @@ I think there are some trees that have fallen down because of the tornado. And o
         <namedColor name="tomato">
             <color red="0.92199999094009399" green="0.23100000619888306" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="warmGrey">
-            <color red="0.55299997329999995" green="0.55299997329999995" blue="0.55299997329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="tomato">
+            <color red="0.92199999094009399" green="0.23100000619888306" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="warmGrey">
             <color red="0.55299997329999995" green="0.55299997329999995" blue="0.55299997329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

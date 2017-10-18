@@ -8,12 +8,16 @@
 
 import UIKit
 
-class MakeReqController: BaseController, UITextFieldDelegate, PHTextViewDelegate, UITableViewDelegate, UITableViewDataSource, ReqHeaderDelegate {
+protocol MakeReqDelegate {
+    func requestMade()
+}
+class MakeReqController: BaseController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, ReqHeaderDelegate, UITextViewDelegate {
 
     var heightIncreased:Bool = false
     var reqTypes = ["Evacuation", "Food", "Medication", "Other"]
     var reqImages = ["shelter", "add", "add", "add"]
     var selectedReq = -1
+    var delegate:MakeReqDelegate?
     @IBOutlet weak var chooseBttn: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var nameTxtFld: PaddingTextField!
@@ -82,15 +86,6 @@ class MakeReqController: BaseController, UITextFieldDelegate, PHTextViewDelegate
         }
     }
     
-    func phTextViewDidEndEditing() {
-        
-    }
-    
-    func phTextViewShouldBeginEditing() {
-        
-    }
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reqTypes.count
     }
@@ -118,6 +113,21 @@ class MakeReqController: BaseController, UITextFieldDelegate, PHTextViewDelegate
         chooseBttn.imageView?.image = UIImage(named: reqImages[selectedReq])
     }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let phTextView = textView as! PlaceHolderTextView
+        if textView.text == ""{
+            textView.text = phTextView.placeholder
+        }
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        let phTextView = textView as! PlaceHolderTextView
+        if textView.text == phTextView.placeholder{
+            textView.text = ""
+        }
+        return true
+    }
+    
     func validityCheck() -> Bool{
         var status = 0
         if let _ = nameTxtFld.text{
@@ -130,18 +140,23 @@ class MakeReqController: BaseController, UITextFieldDelegate, PHTextViewDelegate
             status += 1
         }
         
-        return (status == 3 ? true : false)
+        if selectedReq != -1{
+            status += 1
+        }
+        
+        return (status == 4 ? true : false)
     }
     
     func postRequest(){
         let name = nameTxtFld.text!
         let subject = subTxtFld.text!
         let desc = contentTxtView.text!
-        let create = CreateRequest(lat: 124.0, lng: -57.0, reqType: true, name: name, subject: subject, desc: desc)
+        let create = CreateRequest(lat: 124.0, lng: -57.0, reqType: selectedReq, name: name, subject: subject, desc: desc)
         RequestSender().sendRequest(create, success: { (response) in
             let alert = UIAlertController(title: "Request Posted", message: "Please await help!", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action) in
-                
+                self.delegate?.requestMade()
+                self.closeTouch(nil)
             })
             alert.addAction(okAction)
             self.present(alert, animated: true)

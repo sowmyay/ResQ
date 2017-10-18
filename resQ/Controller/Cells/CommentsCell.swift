@@ -16,4 +16,12 @@ class CommentsCell: UITableViewCell {
 
     @IBAction func replyTouch(_ sender: Any) {
     }
+    
+    func config(comment:Comment){
+        if let id = comment.id{
+            self.authorLbl.text = String(id)
+        }
+        self.postedAtLbl.text = comment.createdAt
+        self.descLbl.text = comment.desc
+    }
 }

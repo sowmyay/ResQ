@@ -16,7 +16,7 @@ class GetDetailsHandler: BaseHandler {
     
     override func getURL(_ request:BaseRequest) -> String {
         let listReq = request as! GetDetailsRequest
-        return super.getURL(request)+"/requests"+String(listReq.id)+".json"
+        return super.getURL(request)+"/requests/"+String(listReq.id)+".json"
     }
     
     override func constructDictionary(_ request:BaseRequest) -> [String : AnyObject] {

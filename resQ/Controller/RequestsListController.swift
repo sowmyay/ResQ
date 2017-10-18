@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RequestsListController: BaseController, UITableViewDelegate, UITableViewDataSource {
+class RequestsListController: BaseController, UITableViewDelegate, UITableViewDataSource, MakeReqDelegate {
 
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -68,6 +68,18 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
         return 49
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row != 0{
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReqDetailsController") as! ReqDetailsController
+            vc.config(help: list[indexPath.row - 1])
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func requestMade() {
+        getAllRequests()
+    }
+    
     func getAllRequests(){
         let lat = 123.0
         let lng = -56.0
@@ -75,6 +87,7 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
         RequestSender().sendRequest(listRequest, success: { (response) in
             let listResponse = response as! ReqListResponse
             self.list = listResponse.list
+            self.tableView.reloadData()
         }) { (error) in
             print("\nError in get help list call :")
             print(error)
@@ -82,15 +95,12 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "MakeRequest"{
+            let vc = segue.destination as! MakeReqController
+            vc.delegate = self
+        }
     }
-    */
+    
 
 }

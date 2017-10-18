@@ -23,7 +23,7 @@ class BaseHandler: NSObject {
     }
     
     func getURL(_ request:BaseRequest) -> String {
-        return  C.URL.testPath
+        return  C.URL.herokuServer
         
     }
     

@@ -43,6 +43,9 @@ class RequestListCell: UITableViewCell {
                 statusLbl.text    = "Completed"
                 statusLbl.textColor = UIColor.gray
             }
+        }else{
+            statusLbl.text    = "Unassigned"
+            statusLbl.textColor = UIColor(red: 235/255.0, green: 59/255.0, blue: 41/255.0, alpha: 1.0)
         }
         
         locLbl.text       = request.loc

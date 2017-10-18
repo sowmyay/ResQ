@@ -23,11 +23,11 @@ class HTTPServiceProvider{
             "Accept": "application/json"
         ]
         
-        let AFrequest = Alamofire.request(url, method: (httpMethod == "POST" ? .post : .get), parameters: json, encoding: URLEncoding.methodDependent, headers: headers)
-        
+        let AFrequest = Alamofire.request(url, method: (httpMethod == "POST" ? .post : .get), parameters: json, encoding: (httpMethod == "POST" ? JSONEncoding.`default` : URLEncoding.methodDependent), headers: headers).validate()
         AFrequest.responseJSON { (response) in
             switch response.result {
             case .success( _):
+                print(response.result.value)
                 success(response.result.value as AnyObject)
             case .failure(let error):
                 failure(error.localizedDescription)

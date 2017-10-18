@@ -12,7 +12,7 @@ class ReqListResponse: BaseResponse {
     var list = [HelpListing]()
     
     init(response:NSDictionary) {
-        let reqs = response["list"] as! NSArray
+        let reqs = response["requests"] as! NSArray
         for item in reqs{
             let helpItem = HelpListing(data: item as! NSDictionary)
             list.append(helpItem)
@@ -32,6 +32,7 @@ class HelpListing{
     let status:Int?
     let createdAt:String?
     let updatedAt:String?
+    var images:NSArray?
     
     init(data:NSDictionary){
         id = data["id"] as? Int
@@ -42,8 +43,9 @@ class HelpListing{
         lon = data["lon"] as? Double
         loc = data["location"] as? String
         status = data["status"] as? Int
-        createdAt = data["create_at"] as? String
+        createdAt = data["created_at"] as? String
         updatedAt = data["updated_at"] as? String
+        images = data["images"] as? NSArray
         
         if let helpType = data["help_type"] as? Int{
             switch helpType{

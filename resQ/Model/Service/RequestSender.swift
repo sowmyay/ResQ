@@ -10,17 +10,25 @@ import UIKit
 
 class RequestSender{
     
-    let requestList:[BaseRequest.Type] = [TestRequest.self]
-    let handlerList:[BaseHandler.Type] = [TestHandler.self]
+    let requestList:[BaseRequest.Type] = [TestRequest.self,
+                                          ReqListRequest.self,
+                                          CreateRequest.self,
+                                          AddCommentRequest.self,
+                                          GetDetailsRequest.self]
+    let handlerList:[BaseHandler.Type] = [TestHandler.self,
+                                          ReqListHandler.self,
+                                          CreateHandler.self,
+                                          AddCommentHandler.self,
+                                          GetDetailsHandler.self]
 
     func sendRequest(_ request:BaseRequest, success:@escaping (_ response:BaseResponse)->Void, failure:@escaping (_ error:Any)->Void) {
         
         let handlerType:BaseHandler.Type = self.getHandler(request)
         
         let handlerClass    = handlerType.init()
-        let url                = handlerClass.getURL(request)
+        let url             = handlerClass.getURL(request)
         let dict            = handlerClass.constructDictionary(request)
-        let httpMethod        = handlerClass.getHTTPMethod(request)
+        let httpMethod      = handlerClass.getHTTPMethod(request)
         
         HTTPServiceProvider.sharedInstance.submitJSON(dict, url: url, httpMethod: httpMethod, success: { (response) in
             let responseObject = handlerClass.parser(response)

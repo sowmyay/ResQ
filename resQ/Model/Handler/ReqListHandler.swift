@@ -1,5 +1,5 @@
 //
-//  TestHandler.swift
+//  ReqListHandler.swift
 //  resQ
 //
 //  Created by sowmya yellapragada on 10/16/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestHandler: BaseHandler {
+class ReqListHandler: BaseHandler {
 
     override func getHTTPMethod(_ request:BaseRequest) -> String {
         return "GET"
@@ -16,21 +16,20 @@ class TestHandler: BaseHandler {
     
     override func getURL(_ request:BaseRequest) -> String {
         
-        return super.getURL(request)+"/pet/findByStatus"
+        return super.getURL(request)+"/requests.json"
     }
     
     override func constructDictionary(_ request:BaseRequest) -> [String : AnyObject] {
         super.constructDictionary(request)
+        let listReq = request as! ReqListRequest
+        dictionary["lat"] = listReq.latitude as AnyObject
+        dictionary["lon"] = listReq.longitude as AnyObject
         return dictionary
     }
     
     override func parser(_ response: AnyObject) -> BaseResponse? {
         
-        for item in (response as! NSArray){
-            let data = item as! NSDictionary
-            print(data)
-            return TestResponse(response: data)
-        }
-        return super.parser(response)
+        let data = response as! NSDictionary
+        return ReqListResponse(response: data)
     }
 }

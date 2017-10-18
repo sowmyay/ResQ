@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 
 class HTTPServiceProvider{
 
@@ -27,41 +26,12 @@ class HTTPServiceProvider{
         let AFrequest = Alamofire.request(url, method: (httpMethod == "POST" ? .post : .get), parameters: json, encoding: URLEncoding.methodDependent, headers: headers)
         
         AFrequest.responseJSON { (response) in
-            print(response)
-            do{
-                switch response.result {
-                case .success(let data):
-//                    let json = JSON(data)
-                    print(response.result.value )
-                    success(response.result.value as AnyObject)
-                case .failure(let error):
-                    failure(error)
-                }
-            }catch{
-                failure("ERROR")
+            switch response.result {
+            case .success( _):
+                success(response.result.value as AnyObject)
+            case .failure(let error):
+                failure(error.localizedDescription)
             }
-           
         }
     }
-
-//    func sendAuthInHeader(json:[String:AnyObject]) -> (json: [String:AnyObject], auth: String?){
-//        var modifiedJSON = json
-//        if let sendAuthInHeader = modifiedJSON["auth_in_header"] as? Bool, sendAuthInHeader{
-//            if let auth = modifiedJSON["auth_token"] as? String{
-//                modifiedJSON.removeValue(forKey: "auth_token")
-//                modifiedJSON.removeValue(forKey: "auth_in_header")
-//                return (modifiedJSON, auth)
-//            }
-//        }
-//        return (modifiedJSON, nil)
-//    }
-//
-//    fileprivate func getParameterGetString(_ parameters:[String:AnyObject]) -> String {
-//        var getString = String()
-//        getString.append("?")
-//        for (key,value) in parameters {
-//            getString.append("&\(key)=\(value)")
-//        }
-//        return getString
-//    }
 }

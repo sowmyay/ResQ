@@ -21,6 +21,13 @@ class BaseController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func closeTouch(_ sender: Any) {
+     _ = self.navigationController?.popViewController(animated:true)
+    }
+    
+    @IBAction func backTouch(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

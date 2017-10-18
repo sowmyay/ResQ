@@ -10,6 +10,7 @@ import Foundation
 
 struct C{
     struct URL{
-        static let testPath = "http://virtserver.swaggerhub.com/resQ/test/1.0.0"
+        static let testPath = "http://virtserver1.swaggerhub.com/resQ/test/1.0.0"
+        static let herokuServer = "http://protected-garden-98837.herokuapp.com"
     }
 }

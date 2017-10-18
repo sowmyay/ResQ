@@ -18,15 +18,7 @@ class BaseRequest: NSObject {
     var requestType:String? = nil
     var apiName:String?     = ""
     
-    //User Location
-    var latitude: Double?
-    var longitude: Double?
-    
     override init() {
         super.init()
-//        if let userLocation = SavedData.getUserLocation, let lat = userLocation.lat, let lng = userLocation.lng {
-//            self.latitude   = lat
-//            self.longitude  = lng
-//        }
     }
 }

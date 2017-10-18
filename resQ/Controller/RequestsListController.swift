@@ -20,9 +20,11 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
     var timeSince = ["Just now", "1h", "1h", "2h", "3h"]
     var types = ["Evacuation", "Food", "Evacuation", "Evacuation", "Food"]
     
+    var list = [HelpListing]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeRequest()
+        getAllRequests()
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -41,7 +43,6 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
     //MARK:- Table View Delegate Methods
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let identifier = "requestCell"
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "reqNotifCell", for: indexPath) as! RequestNotifCell
             return cell
@@ -49,12 +50,13 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "requestCell", for: indexPath) as! RequestListCell
        
         let index = indexPath.row-1
-        cell.config(title: titles[index], desc: content[index], status: status[index], loc: locations[index], timeSince: timeSince[index], type: types[index])
+        cell.config(request: list[index])
+       // cell.config(title: titles[index], desc: content[index], status: status[index], loc: locations[index], timeSince: timeSince[index], type: types[index])
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count + 1
+        return list.count + 1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -66,14 +68,20 @@ class RequestsListController: BaseController, UITableViewDelegate, UITableViewDa
         return 49
     }
     
-    func makeRequest(){
-        let request = TestRequest()
-        RequestSender().sendRequest(request, success: { (response) in
-            print(response)
+    func getAllRequests(){
+        let lat = 123.0
+        let lng = -56.0
+        let listRequest = ReqListRequest(lat: lat, lon: lng)
+        RequestSender().sendRequest(listRequest, success: { (response) in
+            let listResponse = response as! ReqListResponse
+            self.list = listResponse.list
         }) { (error) in
+            print("\nError in get help list call :")
             print(error)
+            print("\n")
         }
     }
+    
     
     /*
     // MARK: - Navigation

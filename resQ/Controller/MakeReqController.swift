@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, ReqHeaderDelegate {
+class MakeReqController: BaseController, UITextFieldDelegate, PHTextViewDelegate, UITableViewDelegate, UITableViewDataSource, ReqHeaderDelegate {
 
     var heightIncreased:Bool = false
     var reqTypes = ["Evacuation", "Food", "Medication", "Other"]
@@ -18,7 +18,7 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var nameTxtFld: PaddingTextField!
     @IBOutlet weak var subTxtFld: PaddingTextField!
-    @IBOutlet weak var contentTxtView: UITextView!
+    @IBOutlet weak var contentTxtView: PlaceHolderTextView!
     @IBOutlet weak var reqTypeTableView: UITableView!
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
     @IBOutlet weak var popUpView: UIView!
@@ -47,6 +47,9 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate
     }
     
     @IBAction func postTouch(_ sender: Any) {
+        if validityCheck(){
+            postRequest()
+        }
     }
     
     @IBAction func chooseTouch(_ sender: Any) {
@@ -58,7 +61,6 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate
     func chooseTouched() {
          self.popUpView.isHidden = true
     }
-    
     
     @objc func keyboardDidShow(notification: NSNotification) {
         
@@ -79,6 +81,15 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate
             }
         }
     }
+    
+    func phTextViewDidEndEditing() {
+        
+    }
+    
+    func phTextViewShouldBeginEditing() {
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reqTypes.count
@@ -105,6 +116,38 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITextViewDelegate
         self.popUpView.isHidden = true
         chooseBttn.titleLabel?.text = reqTypes[selectedReq]
         chooseBttn.imageView?.image = UIImage(named: reqImages[selectedReq])
+    }
+    
+    func validityCheck() -> Bool{
+        var status = 0
+        if let _ = nameTxtFld.text{
+            status += 1
+        }
+        if let _ = subTxtFld{
+            status += 1
+        }
+        if let text = contentTxtView.text, text != contentTxtView.placeholder{
+            status += 1
+        }
+        
+        return (status == 3 ? true : false)
+    }
+    
+    func postRequest(){
+        let name = nameTxtFld.text!
+        let subject = subTxtFld.text!
+        let desc = contentTxtView.text!
+        let create = CreateRequest(lat: 124.0, lng: -57.0, reqType: true, name: name, subject: subject, desc: desc)
+        RequestSender().sendRequest(create, success: { (response) in
+            let alert = UIAlertController(title: "Request Posted", message: "Please await help!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action) in
+                
+            })
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }) { (error) in
+            print(error)
+        }
     }
 
 }

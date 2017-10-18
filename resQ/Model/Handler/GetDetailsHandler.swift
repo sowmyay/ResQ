@@ -1,22 +1,22 @@
 //
-//  TestHandler.swift
+//  GetDetailsHandler.swift
 //  resQ
 //
-//  Created by sowmya yellapragada on 10/16/17.
+//  Created by sowmya yellapragada on 10/17/17.
 //  Copyright © 2017 sowmya.yellapragada. All rights reserved.
 //
 
 import UIKit
 
-class TestHandler: BaseHandler {
+class GetDetailsHandler: BaseHandler {
 
     override func getHTTPMethod(_ request:BaseRequest) -> String {
         return "GET"
     }
     
     override func getURL(_ request:BaseRequest) -> String {
-        
-        return super.getURL(request)+"/pet/findByStatus"
+        let listReq = request as! GetDetailsRequest
+        return super.getURL(request)+"/requests"+String(listReq.id)+".json"
     }
     
     override func constructDictionary(_ request:BaseRequest) -> [String : AnyObject] {
@@ -26,11 +26,7 @@ class TestHandler: BaseHandler {
     
     override func parser(_ response: AnyObject) -> BaseResponse? {
         
-        for item in (response as! NSArray){
-            let data = item as! NSDictionary
-            print(data)
-            return TestResponse(response: data)
-        }
-        return super.parser(response)
+        let data = response as! NSDictionary
+        return GetDetailsResponse(response: data)
     }
 }

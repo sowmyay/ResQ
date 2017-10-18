@@ -156,6 +156,7 @@
                                             <outlet property="timeSinceLbl" destination="oxp-eE-NqX" id="tii-hB-si2"/>
                                             <outlet property="titleLbl" destination="vx4-Ph-DzN" id="cZQ-2G-7np"/>
                                             <outlet property="typeLbl" destination="MAe-Gq-k2S" id="JmE-uj-vnY"/>
+                                            <segue destination="CsX-3M-Hl7" kind="show" identifier="showDetails" id="TO9-gN-bAh"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reqNotifCell" rowHeight="150" id="GW2-A0-G1f" customClass="RequestNotifCell" customModule="resQ" customModuleProvider="target">
@@ -285,7 +286,7 @@
                                                     <rect key="frame" x="352" y="21.5" width="8" height="6"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5s-56-wwK">
-                                                    <rect key="frame" x="94.5" y="12" width="265.5" height="24"/>
+                                                    <rect key="frame" x="94.5" y="0.0" width="265.5" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                                                     <state key="normal" title="New Posts">
@@ -310,6 +311,7 @@
                                                 <constraint firstItem="d5s-56-wwK" firstAttribute="leading" secondItem="uCq-sG-eok" secondAttribute="trailing" constant="10" id="TA3-HH-gD9"/>
                                                 <constraint firstItem="E83-UN-fjO" firstAttribute="leading" secondItem="zdM-vV-BTt" secondAttribute="leading" constant="15" id="bTn-zc-dBT"/>
                                                 <constraint firstItem="E83-UN-fjO" firstAttribute="centerY" secondItem="E18-lb-Edh" secondAttribute="centerY" id="byV-zz-zm1"/>
+                                                <constraint firstItem="d5s-56-wwK" firstAttribute="top" secondItem="zdM-vV-BTt" secondAttribute="top" id="nxM-Ei-UeE"/>
                                                 <constraint firstItem="uCq-sG-eok" firstAttribute="leading" secondItem="E83-UN-fjO" secondAttribute="trailing" constant="10" id="rpf-Ax-fBH"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -520,16 +522,17 @@
                                                         <color key="textColor" name="pinkishGreyTwo"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RL5-ln-A3Q">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RL5-ln-A3Q" customClass="PlaceHolderTextView" customModule="resQ" customModuleProvider="target">
                                                         <rect key="frame" x="15" y="38.5" width="345" height="363.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <string key="text">Please describe what kind of help you need as clearly as possible. For example, if you are requesting food, tell us how many are with you and what you need. </string>
                                                         <color key="textColor" name="warmGrey"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="TE5-yW-zao" id="XAL-FX-LS2"/>
-                                                        </connections>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder">
+                                                                <string key="value">Please describe what kind of help you need as clearly as possible. For example, if you are requesting food, tell us how many are with you and what you need. </string>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arq-uD-R3r">
                                                         <rect key="frame" x="320" y="343" width="40" height="44"/>
@@ -729,7 +732,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="xcf-bE-5dk" id="HdM-bD-2e2"/>
                         <outlet property="chooseBttn" destination="E4k-U2-upa" id="MSj-J6-s3C"/>
-                        <outlet property="contentTxtView" destination="RL5-ln-A3Q" id="44g-Cy-nJm"/>
+                        <outlet property="contentTxtView" destination="RL5-ln-A3Q" id="NoV-ch-tGQ"/>
                         <outlet property="nameTxtFld" destination="5NZ-ab-26P" id="AyD-O7-qqq"/>
                         <outlet property="popUpView" destination="qNb-4J-Ddb" id="RGI-wb-ZAV"/>
                         <outlet property="reqTypeTableView" destination="YhT-8Q-5Bp" id="BDG-Wu-wRa"/>
@@ -746,7 +749,7 @@
             <objects>
                 <viewController id="CsX-3M-Hl7" customClass="ReqDetailsController" customModule="resQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8SQ-Tt-FMN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="810"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="870"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dw9-lk-Jhc">
@@ -762,7 +765,7 @@
                                             <color key="titleColor" name="greyishBrown"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelTouch:" destination="TE5-yW-zao" eventType="touchUpInside" id="cES-ZJ-fba"/>
+                                            <action selector="backTouch:" destination="CsX-3M-Hl7" eventType="touchUpInside" id="FL8-ss-dBm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNG-Ss-QTL">
@@ -775,6 +778,7 @@
                                             <color key="titleColor" name="warmGreyThree"/>
                                         </state>
                                         <connections>
+                                            <action selector="moreOptions:" destination="CsX-3M-Hl7" eventType="touchUpInside" id="vft-57-kXH"/>
                                             <action selector="postTouch:" destination="TE5-yW-zao" eventType="touchUpInside" id="wKh-pi-bLB"/>
                                         </connections>
                                     </button>
@@ -788,6 +792,7 @@
                                             <color key="titleColor" name="warmGreyThree"/>
                                         </state>
                                         <connections>
+                                            <action selector="bookmarkTouch:" destination="CsX-3M-Hl7" eventType="touchUpInside" id="ZSP-Uh-EKX"/>
                                             <action selector="postTouch:" destination="TE5-yW-zao" eventType="touchUpInside" id="zKe-ZL-iYl"/>
                                         </connections>
                                     </button>
@@ -803,15 +808,15 @@
                                     <constraint firstItem="K3m-oh-Gcr" firstAttribute="centerY" secondItem="RNG-Ss-QTL" secondAttribute="centerY" id="tND-xo-82H"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="365" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-df-d9v">
-                                <rect key="frame" x="0.0" y="81" width="375" height="729"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="365" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-df-d9v">
+                                <rect key="frame" x="0.0" y="81" width="375" height="745"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="410" id="zMh-uJ-J1z">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="410" id="zMh-uJ-J1z" customClass="ReqDetailsCell" customModule="resQ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="410"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zMh-uJ-J1z" id="si0-lw-W2G">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="409.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="410"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4y-XE-T8R">
@@ -911,7 +916,7 @@ I think there are some trees that have fallen down because of the tornado. And o
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wEd-FJ-o1H">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="wEd-FJ-o1H" customClass="ImageCVCell" customModule="resQ" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -929,8 +934,15 @@ I think there are some trees that have fallen down because of the tornado. And o
                                                                         <constraint firstAttribute="bottom" secondItem="ZR6-hg-2Ld" secondAttribute="bottom" id="dZp-oe-mas"/>
                                                                         <constraint firstItem="ZR6-hg-2Ld" firstAttribute="top" secondItem="wEd-FJ-o1H" secondAttribute="top" id="geJ-xi-aOL"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <outlet property="imageView" destination="ZR6-hg-2Ld" id="Mfq-0U-l16"/>
+                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="zMh-uJ-J1z" id="u3M-cX-NAF"/>
+                                                                <outlet property="delegate" destination="zMh-uJ-J1z" id="JzQ-MT-T2c"/>
+                                                            </connections>
                                                         </collectionView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -974,20 +986,31 @@ I think there are some trees that have fallen down because of the tornado. And o
                                                             <color key="textColor" name="warmGrey"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTl-Bd-xQO">
+                                                            <rect key="frame" x="311.5" y="0.0" width="63.5" height="40"/>
+                                                            <connections>
+                                                                <action selector="shareTouch:" destination="zMh-uJ-J1z" eventType="touchUpInside" id="7kY-Rc-0IW"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="mZE-aP-aDJ" firstAttribute="centerY" secondItem="Pse-KO-cAc" secondAttribute="centerY" id="4e9-VG-r3r"/>
                                                         <constraint firstItem="Pse-KO-cAc" firstAttribute="centerY" secondItem="Pxr-6j-oCn" secondAttribute="centerY" id="8i3-lR-lwi"/>
                                                         <constraint firstAttribute="trailing" secondItem="mZE-aP-aDJ" secondAttribute="trailing" constant="15" id="9fN-Lf-hVI"/>
+                                                        <constraint firstItem="hTl-Bd-xQO" firstAttribute="top" secondItem="Pxr-6j-oCn" secondAttribute="top" id="B97-ii-s5j"/>
+                                                        <constraint firstItem="hTl-Bd-xQO" firstAttribute="centerY" secondItem="Pxr-6j-oCn" secondAttribute="centerY" id="P5M-2e-8FR"/>
                                                         <constraint firstItem="yBE-wg-Qek" firstAttribute="centerY" secondItem="Pxr-6j-oCn" secondAttribute="centerY" id="Ud6-If-Tif"/>
                                                         <constraint firstItem="Rbc-no-bSL" firstAttribute="centerY" secondItem="yBE-wg-Qek" secondAttribute="centerY" id="VFJ-Ot-POe"/>
                                                         <constraint firstItem="Rbc-no-bSL" firstAttribute="leading" secondItem="yBE-wg-Qek" secondAttribute="trailing" constant="8" id="ZvQ-ON-523"/>
+                                                        <constraint firstAttribute="trailing" secondItem="hTl-Bd-xQO" secondAttribute="trailing" id="cm9-YT-MCu"/>
                                                         <constraint firstItem="ZSo-vQ-CJ2" firstAttribute="leading" secondItem="lm6-Dx-ZK7" secondAttribute="trailing" constant="8" id="e2f-zw-1dO"/>
+                                                        <constraint firstAttribute="bottom" secondItem="hTl-Bd-xQO" secondAttribute="bottom" id="e8l-wA-WLu"/>
                                                         <constraint firstItem="yBE-wg-Qek" firstAttribute="centerX" secondItem="Pxr-6j-oCn" secondAttribute="centerX" constant="-20" id="hRZ-9q-6rb"/>
                                                         <constraint firstAttribute="height" constant="40" id="hSa-ff-05q"/>
                                                         <constraint firstItem="ZSo-vQ-CJ2" firstAttribute="centerY" secondItem="lm6-Dx-ZK7" secondAttribute="centerY" id="k8R-Ya-vmy"/>
                                                         <constraint firstItem="lm6-Dx-ZK7" firstAttribute="centerY" secondItem="Pxr-6j-oCn" secondAttribute="centerY" id="sok-gb-jfe"/>
+                                                        <constraint firstItem="hTl-Bd-xQO" firstAttribute="leading" secondItem="Pse-KO-cAc" secondAttribute="leading" id="v0N-4K-YJb"/>
                                                         <constraint firstItem="lm6-Dx-ZK7" firstAttribute="leading" secondItem="Pxr-6j-oCn" secondAttribute="leading" constant="15" id="yse-PU-mvQ"/>
                                                         <constraint firstItem="mZE-aP-aDJ" firstAttribute="leading" secondItem="Pse-KO-cAc" secondAttribute="trailing" constant="8" id="ywn-SW-bi3"/>
                                                     </constraints>
@@ -1007,12 +1030,25 @@ I think there are some trees that have fallen down because of the tornado. And o
                                                 <constraint firstItem="Ngo-ID-YoL" firstAttribute="top" secondItem="K4y-XE-T8R" secondAttribute="bottom" constant="1" id="dvj-ED-sqt"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLbl" destination="t2h-hZ-qSJ" id="eue-nx-ypI"/>
+                                            <outlet property="collectionView" destination="ywf-qJ-rAh" id="vPL-LZ-50E"/>
+                                            <outlet property="collectionViewHeight" destination="fNd-fx-MNR" id="zQU-sH-NO5"/>
+                                            <outlet property="commentsLbl" destination="Rbc-no-bSL" id="ahx-m5-Koc"/>
+                                            <outlet property="detailsLbl" destination="AKd-cp-ClF" id="HFX-0P-cyK"/>
+                                            <outlet property="locationLbl" destination="5SO-Lq-72z" id="FYV-Fz-yDM"/>
+                                            <outlet property="postedAtLbl" destination="kuy-yv-FmO" id="sxZ-Lg-LfG"/>
+                                            <outlet property="statusLbl" destination="q5b-WS-Mi0" id="x2X-sG-7Ky"/>
+                                            <outlet property="titleLbl" destination="vLs-h2-dcD" id="qfA-2N-lTJ"/>
+                                            <outlet property="typeLbl" destination="ONl-xF-Wed" id="Keu-ZN-fiI"/>
+                                            <outlet property="viewsLbl" destination="ZSo-vQ-CJ2" id="weX-4s-BrX"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="NYO-tw-dCA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="69" id="NYO-tw-dCA" customClass="RespondCell" customModule="resQ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="438" width="375" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYO-tw-dCA" id="691-6C-QFB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3t-ZG-Tep">
@@ -1047,11 +1083,11 @@ I think there are some trees that have fallen down because of the tornado. And o
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="mel-2V-8vw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="mel-2V-8vw" customClass="CommentsCell" customModule="resQ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="507" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mel-2V-8vw" id="arH-zl-r7M">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Akhil Mohanan / Volunteer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZk-ZP-sM3">
@@ -1078,6 +1114,9 @@ I think there are some trees that have fallen down because of the tornado. And o
                                                     <state key="normal" title="Reply" image="reply-small">
                                                         <color key="titleColor" name="warmGrey"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="replyTouch:" destination="mel-2V-8vw" eventType="touchUpInside" id="LEg-BH-b0w"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvp-zQ-MrG">
                                                     <rect key="frame" x="347.5" y="15.5" width="12.5" height="11"/>
@@ -1099,12 +1138,17 @@ I think there are some trees that have fallen down because of the tornado. And o
                                                 <constraint firstItem="JbJ-ER-FZY" firstAttribute="top" secondItem="qZk-ZP-sM3" secondAttribute="bottom" constant="10" id="okW-te-rWb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLbl" destination="qZk-ZP-sM3" id="ZOL-6U-PyN"/>
+                                            <outlet property="descLbl" destination="JbJ-ER-FZY" id="XFf-8d-PLH"/>
+                                            <outlet property="postedAtLbl" destination="pvp-zQ-MrG" id="bbe-Md-x7A"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="130" id="ihy-3S-DEb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="130" id="ihy-3S-DEb" customClass="CommentsCell" customModule="resQ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="617" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ihy-3S-DEb" id="uN2-mh-GKK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geunbae Lee / Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="my6-HQ-uVc">
@@ -1132,6 +1176,9 @@ I think there are some trees that have fallen down because of the tornado. And o
                                                     <state key="normal" title="Reply" image="reply-small">
                                                         <color key="titleColor" name="warmGrey"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="replyTouch:" destination="ihy-3S-DEb" eventType="touchUpInside" id="bfc-kt-PsI"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRa-1U-U3L">
                                                     <rect key="frame" x="347.5" y="18.5" width="12.5" height="11"/>
@@ -1154,27 +1201,72 @@ I think there are some trees that have fallen down because of the tornado. And o
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="authorLbl" destination="my6-HQ-uVc" id="DHw-fo-Jk3"/>
+                                            <outlet property="descLbl" destination="Ck2-5I-xkH" id="gq0-cL-CAC"/>
+                                            <outlet property="postedAtLbl" destination="BRa-1U-U3L" id="PG7-ZE-ko2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f64-Da-gWq">
+                                <rect key="frame" x="0.0" y="826" width="375" height="44"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="t08-k5-aZt">
+                                        <rect key="frame" x="15" y="15" width="10" height="14"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Detailed Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iL-gf-umD">
+                                        <rect key="frame" x="40" y="8" width="129.5" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="warmGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElA-J2-Tkr">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <connections>
+                                            <action selector="viewLocationTouch:" destination="CsX-3M-Hl7" eventType="touchUpInside" id="2fy-cl-Lnr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="51M-hF-1pW"/>
+                                    <constraint firstItem="8iL-gf-umD" firstAttribute="leading" secondItem="t08-k5-aZt" secondAttribute="trailing" constant="15" id="58v-Ot-xkM"/>
+                                    <constraint firstAttribute="bottom" secondItem="8iL-gf-umD" secondAttribute="bottom" constant="8" id="A00-uc-9SQ"/>
+                                    <constraint firstItem="ElA-J2-Tkr" firstAttribute="top" secondItem="f64-Da-gWq" secondAttribute="top" id="Enk-Dr-QVD"/>
+                                    <constraint firstItem="8iL-gf-umD" firstAttribute="centerY" secondItem="t08-k5-aZt" secondAttribute="centerY" id="TdW-qc-veu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ElA-J2-Tkr" secondAttribute="trailing" id="UVd-CA-QzQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="ElA-J2-Tkr" secondAttribute="bottom" id="W4o-rh-73H"/>
+                                    <constraint firstItem="t08-k5-aZt" firstAttribute="centerY" secondItem="f64-Da-gWq" secondAttribute="centerY" id="Zbe-uf-2I7"/>
+                                    <constraint firstItem="8iL-gf-umD" firstAttribute="top" secondItem="f64-Da-gWq" secondAttribute="top" constant="8" id="dQK-op-eyr"/>
+                                    <constraint firstItem="ElA-J2-Tkr" firstAttribute="leading" secondItem="f64-Da-gWq" secondAttribute="leading" id="qmy-u3-xte"/>
+                                    <constraint firstItem="t08-k5-aZt" firstAttribute="leading" secondItem="f64-Da-gWq" secondAttribute="leading" constant="15" id="qvL-79-hFs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="whiteTwo"/>
                         <constraints>
                             <constraint firstItem="Dw9-lk-Jhc" firstAttribute="top" secondItem="8SQ-Tt-FMN" secondAttribute="top" id="7TW-Z1-UQD"/>
-                            <constraint firstItem="IgH-Tb-Ra0" firstAttribute="bottom" secondItem="jyv-df-d9v" secondAttribute="bottom" id="H3S-5N-AFL"/>
+                            <constraint firstItem="IgH-Tb-Ra0" firstAttribute="bottom" secondItem="f64-Da-gWq" secondAttribute="bottom" id="H07-ka-VhL"/>
                             <constraint firstItem="jyv-df-d9v" firstAttribute="top" secondItem="Dw9-lk-Jhc" secondAttribute="bottom" constant="1" id="IrO-UR-KP3"/>
                             <constraint firstItem="jyv-df-d9v" firstAttribute="leading" secondItem="IgH-Tb-Ra0" secondAttribute="leading" id="KqB-wp-kgD"/>
+                            <constraint firstAttribute="trailing" secondItem="f64-Da-gWq" secondAttribute="trailing" id="NLg-jU-AVk"/>
                             <constraint firstAttribute="trailing" secondItem="Dw9-lk-Jhc" secondAttribute="trailing" id="XAZ-0F-uBX"/>
+                            <constraint firstItem="f64-Da-gWq" firstAttribute="top" secondItem="jyv-df-d9v" secondAttribute="bottom" id="XOm-Vp-Db4"/>
                             <constraint firstItem="IgH-Tb-Ra0" firstAttribute="trailing" secondItem="jyv-df-d9v" secondAttribute="trailing" id="gYK-GB-zkg"/>
+                            <constraint firstItem="f64-Da-gWq" firstAttribute="leading" secondItem="IgH-Tb-Ra0" secondAttribute="leading" id="hDD-hV-bnQ"/>
                             <constraint firstItem="Dw9-lk-Jhc" firstAttribute="leading" secondItem="IgH-Tb-Ra0" secondAttribute="leading" id="pCz-5G-LBR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IgH-Tb-Ra0"/>
                     </view>
-                    <size key="freeformSize" width="375" height="810"/>
+                    <size key="freeformSize" width="375" height="870"/>
+                    <connections>
+                        <outlet property="tableView" destination="jyv-df-d9v" id="Qvt-fL-lXu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU0-tt-1E1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1175.2" y="1361.0194902548726"/>
+            <point key="canvasLocation" x="-1164" y="1446"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="aXC-Ud-KMS">
@@ -1242,9 +1334,6 @@ I think there are some trees that have fallen down because of the tornado. And o
         <namedColor name="greyishBrown">
             <color red="0.30599999430000002" green="0.30599999430000002" blue="0.30599999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="greyishBrown">
-            <color red="0.3059999942779541" green="0.3059999942779541" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="pinkishGreyTwo">
             <color red="0.74900001287460327" green="0.74900001287460327" blue="0.74900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1255,7 +1344,7 @@ I think there are some trees that have fallen down because of the tornado. And o
             <color red="0.55299997329999995" green="0.55299997329999995" blue="0.55299997329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="warmGrey">
-            <color red="0.55299997329711914" green="0.55299997329711914" blue="0.55299997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55299997329999995" green="0.55299997329999995" blue="0.55299997329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="warmGreyThree">
             <color red="0.50599998239999999" green="0.50599998239999999" blue="0.50599998239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

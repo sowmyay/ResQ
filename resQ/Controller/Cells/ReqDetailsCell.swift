@@ -45,6 +45,8 @@ class ReqDetailsCell: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         
     }
     
+    @IBAction func commentsTouch(_ sender: Any) {
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = images?.count{
@@ -71,7 +73,7 @@ class ReqDetailsCell: UITableViewCell, UICollectionViewDelegate, UICollectionVie
                 statusLbl.text    = "Unassigned"
                 statusLbl.textColor = UIColor(red: 235/255.0, green: 59/255.0, blue: 41/255.0, alpha: 1.0)
             case 1:
-                statusLbl.text    = "Assigned to Red Cross"
+                statusLbl.text    = "Assigned to Volunteer"
                 statusLbl.textColor = UIColor(red: 68/255.0, green: 155/255.0, blue: 77/255.0, alpha: 1.0)
             default:
                 statusLbl.text    = "Completed"
@@ -87,6 +89,7 @@ class ReqDetailsCell: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         typeLbl.text      = help.resource.map { $0.rawValue }
         viewsLbl.text = String(views) + " views"
         commentsLbl.text = String(comments) + " comments"
+        authorLbl.text = help.author
     
     }
 }

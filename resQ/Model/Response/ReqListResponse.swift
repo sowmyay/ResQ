@@ -13,8 +13,16 @@ class ReqListResponse: BaseResponse {
     
     init(response:NSDictionary) {
         let reqs = response["requests"] as! NSArray
+        var i = 0
         for item in reqs{
             let helpItem = HelpListing(data: item as! NSDictionary)
+//            i += 1
+//            if i == 2{
+//                helpItem.subject = "Need food and water"
+//                helpItem.description = "Have no water or food supply for my kids. We are standard in the apartment with no electricity. Need Help"
+//                helpItem.loc = "12075-12795, County Rd O, Claremont, Ripley Township, Dodge County, MN, US, 55924, 4648"
+//                helpItem.resource = ResourceType.Food
+//            }
             list.append(helpItem)
         }
     }
@@ -22,17 +30,18 @@ class ReqListResponse: BaseResponse {
 
 class HelpListing{
     let id:Int?
-    let subject:String?
-    let description:String?
+    var subject:String?
+    var description:String?
     let views:Int?
     let lat:Double?
     let lon:Double?
-    let loc:String?
-    let resource:ResourceType?
-    let status:Int?
+    var loc:String?
+    var resource:ResourceType?
+    var status:Int?
     let createdAt:String?
     let updatedAt:String?
     var images:NSArray?
+    var author:String?
     
     init(data:NSDictionary){
         id = data["id"] as? Int
@@ -46,6 +55,7 @@ class HelpListing{
         createdAt = data["created_at"] as? String
         updatedAt = data["updated_at"] as? String
         images = data["images"] as? NSArray
+        author = data["user_name"] as? String
         
         if let helpType = data["help_type"] as? Int{
             switch helpType{

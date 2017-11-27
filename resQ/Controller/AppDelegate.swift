@@ -7,16 +7,52 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseMessaging
+import FirebaseInstanceID
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
 
     var window: UIWindow?
-
+    let stack = CoreDataStack(modelName: "Model")!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (isGranted, error) in
+                if error != nil{
+                    print("Notification permission error")
+                }else{
+                    UNUserNotificationCenter.current().delegate = self
+                    Messaging.messaging().delegate = self
+                    DispatchQueue.main.async {
+                        application.registerForRemoteNotifications()
+                        FirebaseApp.configure()
+                    }
+                    
+                    
+                }
+            }
+        } else {
+            
+            let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
+            let pushNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
+            application.registerUserNotificationSettings(pushNotificationSettings)
+            DispatchQueue.main.async {
+                application.registerForRemoteNotifications()
+                FirebaseApp.configure()
+            }
+            
+        }
+        
+        
         return true
+    }
+    
+    func connectToFiebaseConnectionManager(connect:Bool){
+        Messaging.messaging().shouldEstablishDirectChannel = connect
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -27,6 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        do{
+            try stack.saveContext()
+        }catch{
+            print("Failed to save context")
+        }
+        connectToFiebaseConnectionManager(connect: false)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -35,10 +77,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        connectToFiebaseConnectionManager(connect: true)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        do{
+            try stack.saveContext()
+        }catch{
+            print("Failed to save context")
+        }
+    }
+    
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        let newToken = InstanceID.instanceID().token()
+        connectToFiebaseConnectionManager(connect: true)
     }
 
 

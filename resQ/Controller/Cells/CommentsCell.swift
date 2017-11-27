@@ -18,9 +18,10 @@ class CommentsCell: UITableViewCell {
     }
     
     func config(comment:Comment){
-        if let id = comment.id{
-            self.authorLbl.text = String(id)
-        }
+        self.authorLbl.text = comment.authorName
+//        if let id = comment.id{
+//            self.authorLbl.text = String(id)
+//        }
         self.postedAtLbl.text = comment.createdAt
         self.descLbl.text = comment.desc
     }

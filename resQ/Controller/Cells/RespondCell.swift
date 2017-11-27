@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+protocol RespondDelegate {
+    func respond()
+}
 class RespondCell: UITableViewCell {
 
+    var delegate : RespondDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +23,8 @@ class RespondCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func respondTouch(_ sender: Any) {
+        self.delegate?.respond()
+    }
+    
 }

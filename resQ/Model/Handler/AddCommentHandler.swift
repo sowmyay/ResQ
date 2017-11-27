@@ -16,7 +16,7 @@ class AddCommentHandler: BaseHandler {
     
     override func getURL(_ request:BaseRequest) -> String {
         
-        return super.getURL(request)+"/requests.json"
+        return super.getURL(request)+"/requests/comment.json"
     }
     
     override func constructDictionary(_ request:BaseRequest) -> [String : AnyObject] {

@@ -7,12 +7,18 @@
 //
 
 import UIKit
+protocol NotifCellDelegate {
+    func dismissNotif()
+    func notifClicked()
+}
 
 class RequestNotifCell: UITableViewCell {
 
     @IBOutlet weak var reqImage: UIImageView!
     @IBOutlet weak var reqTitleLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
+    
+    var delegate:NotifCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +29,10 @@ class RequestNotifCell: UITableViewCell {
     }
 
     @IBAction func closeTouch(_ sender: Any) {
+        self.delegate?.dismissNotif()
     }
     
     @IBAction func findHelpTouch(_ sender: Any) {
+        self.delegate?.notifClicked()
     }
 }

@@ -14,12 +14,18 @@ class RequestSender{
                                           ReqListRequest.self,
                                           CreateRequest.self,
                                           AddCommentRequest.self,
-                                          GetDetailsRequest.self]
+                                          GetDetailsRequest.self,
+                                          LocationsRequest.self,
+                                          RespondRequest.self,
+                                          GetDeviceReqRequest.self]
     let handlerList:[BaseHandler.Type] = [TestHandler.self,
                                           ReqListHandler.self,
                                           CreateHandler.self,
                                           AddCommentHandler.self,
-                                          GetDetailsHandler.self]
+                                          GetDetailsHandler.self,
+                                          LocationsHandler.self,
+                                          RespondHandler.self,
+                                          GetDeviceReqHandler.self]
 
     func sendRequest(_ request:BaseRequest, success:@escaping (_ response:BaseResponse)->Void, failure:@escaping (_ error:Any)->Void) {
         

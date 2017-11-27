@@ -42,7 +42,7 @@ class Comment{
     
     init(data:NSDictionary){
         self.id = data["id"] as? Int
-        self.authorName = data["name"] as? String
+        self.authorName = data["user_name"] as? String
         self.desc = data["description"] as? String
         self.createdAt = data["created_at"] as? String
         self.updatedAt = data["updated_at"] as? String

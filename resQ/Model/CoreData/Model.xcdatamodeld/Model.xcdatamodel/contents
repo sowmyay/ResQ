@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HelpLocation" representedClassName=".HelpLocation" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="discipline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" attributeType="Double" minValueString="-90" maxValueString="90" defaultValueString="44" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lng" attributeType="Double" minValueString="-180" maxValueString="180" defaultValueString="-93" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="locationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="HelpLocation" positionX="-63" positionY="-18" width="128" height="30"/>
+    </elements>
+</model>

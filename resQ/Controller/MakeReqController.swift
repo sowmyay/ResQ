@@ -15,7 +15,7 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITableViewDelegat
 
     var heightIncreased:Bool = false
     var reqTypes = ["Evacuation", "Food", "Medication", "Other"]
-    var reqImages = ["shelter", "add", "add", "add"]
+    var reqImages = ["shelters", "add", "add", "add"]
     var selectedReq = -1
     var delegate:MakeReqDelegate?
     @IBOutlet weak var chooseBttn: UIButton!
@@ -30,6 +30,7 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.popUpView.isHidden = true
+        nameTxtFld.text = Singleton.instance.name
         self.tableHeight.constant = CGFloat(45*1 + 44 * reqTypes.count)
         NotificationCenter.default.addObserver(self, selector: #selector(MakeReqController.keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MakeReqController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -39,11 +40,6 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITableViewDelegat
         view.endEditing(true)
         NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardDidShow)
         NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardWillHide)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func cancelTouch(_ sender: Any) {
@@ -151,7 +147,7 @@ class MakeReqController: BaseController, UITextFieldDelegate, UITableViewDelegat
         let name = nameTxtFld.text!
         let subject = subTxtFld.text!
         let desc = contentTxtView.text!
-        let create = CreateRequest(lat: 124.0, lng: -57.0, reqType: selectedReq, name: name, subject: subject, desc: desc)
+        let create = CreateRequest(lat: 44.0, lng: -93.0, reqType: selectedReq, name: name, subject: subject, desc: desc)
         RequestSender().sendRequest(create, success: { (response) in
             let alert = UIAlertController(title: "Request Posted", message: "Please await help!", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action) in
